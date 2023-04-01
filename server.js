@@ -1,46 +1,38 @@
 import express from "express";
-import  color  from "colors";
+import colors from "colors";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import connectDB from "./config/database.js";
-import authRouts from "./routes/authRoute.js";
-
+import authRoutes from "./routes/authRoute.js";
 
 //configure env
-dotenv.config()
+dotenv.config();
 
-//database config
+//databse config
 connectDB();
 
 //rest object
-const app=express();
+const app = express();
 
-
-//middle wae
+//middelwares
 app.use(express.json());
-app.use(morgan("dev"))
+app.use(morgan("dev"));
 
-
-//Routes
-app.use('/api/v1/auth',authRouts)
-
-
+//routes
+app.use("/api/v1/auth", authRoutes);
 
 //rest api
-app.get('/',(req,res)=>{
-    res.json.parse(
-        res.send(`<h1>The Ecommers Appliaction started</h1>`)
-    )
-    // res.send({
-    //     messsage:"wllcome",
-    //     secondmessage:"secondmessage"
-    // })
-})
+app.get("/", (req, res) => {
+  res.send("<h1>Welcome to ecommerce app</h1>");
+});
 
-//port
-const PORT=process.env.PORT || 8080
+//PORT
+const PORT = process.env.PORT || 8080;
 
 //run listen
-app.listen(PORT,()=>{
-    console.log(`server running port${PORT}`.bgBlue)
-})
+app.listen(PORT, () => {
+  console.log(
+    `Server Running on ${process.env.DEV_MODE} mode on port ${PORT}`.bgCyan
+      .white
+  );
+});

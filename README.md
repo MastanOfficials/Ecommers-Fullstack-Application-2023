@@ -18,7 +18,17 @@ In package.json  to setup -->  "main": "index.js",
 
  # mvc pattern for folder structure
  controllers ---logics folder
- routers     --- all routes under this folder
+ routers     --- all routes under folder
  models      ---
- helper      ---utilitis
+ helper      ---utilitisea.body
  middleware  ---middleware
+
+
+const asyncFun=async(req,res)=>{
+    try{
+     let connection =awit 
+    }
+    catch(error){
+        console.log(error)
+    }
+}
